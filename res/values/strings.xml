@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">Skyle</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- Menu -->
+    <string name="menu_settings">Settings</string>
+    <string name="menu_camera">Camera</string>
+    
+    <!-- MainActivity -->
+    <string name="title_activity_main">Skyle</string>
+    
+    <!-- AddItemActivity -->
+    <string name="title_activity_additem">Add item</string>
+    
+    <!-- ItemDialogActivity -->
+    <string name="title_activity_itemdialog">Select type of clothing</string>
+
+</resources>

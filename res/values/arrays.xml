@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array name="clothing_items">
+        <item name="tshirt">T-shirt</item>
+        <item name="shorts">Shorts</item>
+        <item name="skirt">Skirt</item>
+		<item name="dress">Dress</item>
+		<item name="jacket">Jacket</item>
+		<item name="top">Top</item>
+		<item name="pants">Pants</item>
+		<item name="underwear">Underwear</item>
+		<item name="sweater">Sweater</item>
+		<item name="shoes">Shoes</item>
+		<item name="jeans">Jeans</item>
+		<item name="cardigan">Cardigan</item>
+		<item name="tanktop">Tank top</item>
+		<item name="swimsuit">Swimsuit</item>
+		<item name="pullover">Pullover</item>
+		<item name="blazer">Blazer</item>
+		<item name="coat">Coat</item>
+		<item name="jumper">Jumper</item>
+		<item name="jersey">Jersey</item>
+		<item name="blouse">Blouse</item>
+    </string-array>
+</resources>
