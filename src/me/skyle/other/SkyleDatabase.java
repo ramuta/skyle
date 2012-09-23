@@ -33,6 +33,7 @@ public class SkyleDatabase {
 	public SkyleDatabase(Context context) {
 		this.context = context;
 		helper = new DatabaseHelper(context, SkyleConstants.DB_NAME, null, SkyleConstants.DB_VERSION);
+		
 	}
 	
 	/** Open the database. */
@@ -82,7 +83,7 @@ public class SkyleDatabase {
 			cursor.moveToNext();
 		}
 		cursor.close();
-		Log.i(TAG, "arraylist: "+items.toString());		
+		Log.i(TAG, "arraylist: "+items.toString());
 		return items;
 	}
 	

@@ -4,11 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YEA FAKIN OUTFIT FRAGMENT!!! :)" />
+	<com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/outfit_gallery_top"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
+	
+	<com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/outfit_gallery_bottom"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
+	
+	<com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/outfit_gallery_shoes"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
 
 </LinearLayout>

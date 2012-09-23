@@ -3,6 +3,7 @@ package me.skyle.activities;
 import java.util.ArrayList;
 
 import me.skyle.R;
+import me.skyle.data.SkyleConstants;
 import me.skyle.other.SkyleDatabase;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -85,10 +86,10 @@ public class AddItemActivity extends SherlockActivity {
 		imageLoader.displayImage("file://"+imagePath, itemImage, options);		
         
         // clothing category
-        clothCat.add("top");
-        clothCat.add("bottom");
-        clothCat.add("shoes");
-        clothCat.add("accessories");
+        clothCat.add(SkyleConstants.TYPE_TOP);
+        clothCat.add(SkyleConstants.TYPE_BOTTOM);
+        clothCat.add(SkyleConstants.TYPE_SHOES);
+        clothCat.add(SkyleConstants.TYPE_ACCESSORIES);
         
         spinnerAdapter = new ArrayAdapter<String>(AddItemActivity.this, android.R.layout.simple_spinner_item, clothCat);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);        

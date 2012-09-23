@@ -62,7 +62,7 @@ public class ClosetFragment extends SherlockFragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		adapter = new ItemsAdapter(getActivity(), R.layout.fragment_list_item, items);
+		adapter = new ItemsAdapter(getActivity(), R.layout.fragment_list_item, R.id.fragment_list_item_image, items);
 		list.setAdapter(adapter);
 	}
 }

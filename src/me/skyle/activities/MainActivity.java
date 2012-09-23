@@ -64,7 +64,8 @@ public class MainActivity extends SherlockFragmentActivity {
         
         //db = new SkyleDatabase(MainActivity.this);
         
-        
+        itemHelper = new ItemHelper(MainActivity.this);
+		itemHelper.init(); // get items from the database
         
         // Outfit tab
         ActionBar.Tab outfit = getSupportActionBar().newTab();
@@ -214,7 +215,6 @@ public class MainActivity extends SherlockFragmentActivity {
     @Override
     public void onResume() {
     	super.onResume();
-    	itemHelper = new ItemHelper(MainActivity.this);
-		itemHelper.init(); // get items from the database
+    	itemHelper.init(); // get items from the database
     }
 }

@@ -22,14 +22,18 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
 	private static final String TAG = "ItemsAdapter";
 	private LayoutInflater inflater;
 	private ArrayList<Item> items;
-	private SkyleDatabase db;
+	//private SkyleDatabase db;
 	private ImageLoader imageLoader;
 	private DisplayImageOptions options;
+	private int textViewResourceId;
+	private int imageResourceId;
 
-	public ItemsAdapter(Context context, int textViewResourceId, ArrayList<Item> items) {
+	public ItemsAdapter(Context context, int textViewResourceId, int imageResourceId, ArrayList<Item> items) {
 		super(context, textViewResourceId, items);
 		inflater = LayoutInflater.from(context);
-		db = new SkyleDatabase(context.getApplicationContext());
+		this.textViewResourceId = textViewResourceId;
+		this.imageResourceId = imageResourceId;
+		//db = new SkyleDatabase(context.getApplicationContext());
 		this.items = items;	
 		imageLoader = ImageLoader.getInstance();
  		options = new DisplayImageOptions.Builder()
@@ -47,10 +51,10 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = convertView;
 		if (view == null) {
-			view = inflater.inflate(R.layout.fragment_list_item, null);
+			view = inflater.inflate(textViewResourceId, null);
 		}
 		
-		ImageView image = (ImageView)view.findViewById(R.id.fragment_list_item_image);
+		ImageView image = (ImageView)view.findViewById(imageResourceId);
 		
 		Item newItem = items.get(position);
 		
