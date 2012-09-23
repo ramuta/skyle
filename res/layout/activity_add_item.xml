@@ -8,17 +8,17 @@
         android:id="@+id/additem_imagethumb"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="center" />
 
-    <!-- 
     <Spinner
         android:id="@+id/additem_selecttype"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_margin="10dp" />
-         -->
-         
+
+    <!--   
 	<TextView
 	    android:id="@+id/select_type"
 	    android:layout_width="wrap_content"
@@ -26,6 +26,15 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:hint="Clothing type" />
+        --> 
+
+	<Button
+	    android:id="@+id/additem_addweather"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+        android:layout_margin="10dp"
+	    android:text="Weather conditions" />
 	
 	<Button
 	    android:id="@+id/additem_insertbutton"

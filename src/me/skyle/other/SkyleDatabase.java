@@ -66,6 +66,7 @@ public class SkyleDatabase {
 	
 	/** Get user's items array. */
 	public ArrayList<Item> getItems() {
+		items.clear();
 		Cursor cursor = db.query(SkyleConstants.TABLE_ITEMS, allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		

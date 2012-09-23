@@ -17,9 +17,13 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import me.skyle.R;
 import me.skyle.R.layout;
 import me.skyle.R.menu;
+import me.skyle.fragments.ClosetFragment;
+import me.skyle.fragments.OutfitFragment;
+import me.skyle.fragments.ShopFragment;
 import me.skyle.objects.Item;
 import me.skyle.other.CameraHelper;
 import me.skyle.other.GalleryHelper;
+import me.skyle.other.ItemHelper;
 import me.skyle.other.SkyleDatabase;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +31,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.TextView;
@@ -37,22 +42,16 @@ public class MainActivity extends SherlockFragmentActivity {
 	// actionbar
 	private ActionBar actionBar;
 	
-	// UI
-	TextView hello;
-	
-	/*
-	private ImageLoader imageLoader;
-	private DisplayImageOptions options;
-	*/
-	
 	// galerry/camera
-	private static int IMAGE_FLAG = 0; // gallery: 1, camera: 2
+	private static int IMAGE_FLAG; // gallery: 1, camera: 2
 	private Uri fileUri;
-	private final static int CAMERA_GALLERY_REQUEST_CODE = 123;
+	private final static int GALLERY_REQUEST_CODE = 111;
+	private final static int CAMERA_REQUEST_CODE = 222;
 	public static final String PIC_PATH = "getpicpath";
 	
 	// database
-	SkyleDatabase db;
+	//SkyleDatabase db;
+	private ItemHelper itemHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,20 +62,9 @@ public class MainActivity extends SherlockFragmentActivity {
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         
-        db = new SkyleDatabase(MainActivity.this);
+        //db = new SkyleDatabase(MainActivity.this);
         
-        /*
-        // instantiate image loader
-  		imageLoader = ImageLoader.getInstance();
-  		options = new DisplayImageOptions.Builder()
- 		.showStubImage(R.drawable.ic_launcher)
- 		.cacheInMemory()
- 		.cacheOnDisc()
- 		.build();
-  		imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
-  		*/
         
-        hello = (TextView)findViewById(R.id.main_hello);
         
         // Outfit tab
         ActionBar.Tab outfit = getSupportActionBar().newTab();
@@ -84,21 +72,15 @@ public class MainActivity extends SherlockFragmentActivity {
         outfit.setTabListener(new ActionBar.TabListener(){
         	@Override
         	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-        		// TODO Auto-generated method stub
-        		hello.setText("Hello outfit");
+        		Fragment outfitFragment = new OutfitFragment();
+        		getSupportFragmentManager().beginTransaction().replace(R.id.container, outfitFragment).commit();
         	}
 
         	@Override
-        	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-        		// TODO Auto-generated method stub
-        		
-        	}
+        	public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
 
         	@Override
-        	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-        		// TODO Auto-generated method stub
-        		
-        	}
+        	public void onTabReselected(Tab tab, FragmentTransaction ft) {}
         });
         
         // closet tab
@@ -107,32 +89,23 @@ public class MainActivity extends SherlockFragmentActivity {
         closet.setTabListener(new ActionBar.TabListener() {
 			
 			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
 			
 			@Override
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
 				// TODO Auto-generated method stub
 				
+				/*
 				db.open();
 				ArrayList<Item> items = db.getItems();
 				db.close();
-				
-				try {
-					hello.setText("Hello closet: "+items.get(0).getImagePath());
-				} catch (Exception e) {
-					hello.setText("PRAZNO");
-				}
-				
+				*/
+				Fragment closetFragment = new ClosetFragment();
+        		getSupportFragmentManager().beginTransaction().replace(R.id.container, closetFragment).commit();
 			}
 			
 			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {}
 		});
         
         // shop tab
@@ -141,22 +114,16 @@ public class MainActivity extends SherlockFragmentActivity {
         shop.setTabListener(new ActionBar.TabListener() {
 			
 			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
 			
 			@Override
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				hello.setText("Hello shop");
+				Fragment shopFragment = new ShopFragment();
+        		getSupportFragmentManager().beginTransaction().replace(R.id.container, shopFragment).commit();
 			}
 			
 			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {}
 		});
         
         getSupportActionBar().addTab(outfit);
@@ -185,20 +152,21 @@ public class MainActivity extends SherlockFragmentActivity {
     }
     
     @Override
-    public void onActivityResult(int reqCode, int resultCode, Intent data) {
-    	if (reqCode == CAMERA_GALLERY_REQUEST_CODE) {
-    		if (IMAGE_FLAG == 1) { // gallery
-    			Uri getData = data.getData();   		
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {   	
+		try {
+			if (reqCode == GALLERY_REQUEST_CODE) {
+				Uri getData = data.getData(); 
 				String picPath = GalleryHelper.getRealPathFromURI(getApplicationContext(), getData);
 				GalleryHelper.setImagePath(picPath);
 				goToAddItemActivity(picPath);				
-    		}
-    		else if (IMAGE_FLAG == 2) { // camera intent
-    			String photoPath = CameraHelper.getPhotoPath();
-    			goToAddItemActivity(photoPath);
-    		}
-    	}
-    }
+			} else if (reqCode == CAMERA_REQUEST_CODE) {
+				String photoPath = CameraHelper.getPhotoPath();
+				goToAddItemActivity(photoPath);
+			}
+		} catch (Exception e) {
+			Log.e(TAG, "No item chosen.");
+		}
+	}
     
     /** Go to AddItemActivity. */
     private void goToAddItemActivity(String picPath) {
@@ -232,7 +200,7 @@ public class MainActivity extends SherlockFragmentActivity {
     	Intent intentGallery = new Intent();
     	intentGallery.setType("image/*");
     	intentGallery.setAction(Intent.ACTION_GET_CONTENT);
-    	startActivityForResult(Intent.createChooser(intentGallery, "Select image"), CAMERA_GALLERY_REQUEST_CODE);
+    	startActivityForResult(Intent.createChooser(intentGallery, "Select image"), GALLERY_REQUEST_CODE);
     }
     
     /** Intent to open original Android Camera app. */
@@ -240,6 +208,13 @@ public class MainActivity extends SherlockFragmentActivity {
     	Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);    	
     	fileUri = CameraHelper.getOutputMediaFileUri(CameraHelper.MEDIA_TYPE_IMAGE); // create a file to save the image
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-    	startActivityForResult(intent, CAMERA_GALLERY_REQUEST_CODE);
+    	startActivityForResult(intent, CAMERA_REQUEST_CODE);
+    }
+    
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	itemHelper = new ItemHelper(MainActivity.this);
+		itemHelper.init(); // get items from the database
     }
 }

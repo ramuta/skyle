@@ -22,4 +22,11 @@
 		<item name="jersey">Jersey</item>
 		<item name="blouse">Blouse</item>
     </string-array>
+    
+    <string-array name="clothing_categories">
+        <item name="top">Top</item>
+        <item name="bottom">Bottom</item>
+        <item name="shoes">Shoes</item>
+        <item name="accessories">Accessories</item>
+    </string-array>
 </resources>

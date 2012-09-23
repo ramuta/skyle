@@ -20,7 +20,7 @@ public class ItemDialogActivity extends Activity {
 	private final static String TAG = "TagDialogActivity";
 	private EditText filterEditor;
 	private ArrayAdapter<String> itemAdapter;
-	String selected;
+	public static String selected = "";
 	int selectedPosition;
 	private ListView listView;
 	private String[] itemTypes;
@@ -80,7 +80,7 @@ public class ItemDialogActivity extends Activity {
 			public void onItemClick(AdapterView parent, View v, int position, long id) {
 
 			    selected = parent.getItemAtPosition(position).toString();
-			
+			    AddItemActivity.ITEM_TYPE = selected;
 				
 				Log.i(TAG, "selected: "+selected+", item-position: "+position);
 				//ItemDialogActivity.this.finish();
