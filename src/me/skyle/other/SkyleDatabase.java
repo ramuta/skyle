@@ -72,13 +72,14 @@ public class SkyleDatabase {
 		cursor.moveToFirst();
 		
 		while (!cursor.isAfterLast()) {
+			String ID = cursor.getString(cursor.getColumnIndex(SkyleConstants.KEY_ID));
 			String type = cursor.getString(cursor.getColumnIndex(SkyleConstants.ITEMS_TYPE));
 			String date = cursor.getString(cursor.getColumnIndex(SkyleConstants.DATE_NAME));
 			String path = cursor.getString(cursor.getColumnIndex(SkyleConstants.ITEMS_PATH));
 			
 			Log.i(TAG, "elements: "+type+", "+path);
 			
-			Item item = new Item(type, date, path);			
+			Item item = new Item(ID, type, date, path);			
 			items.add(item);
 			cursor.moveToNext();
 		}

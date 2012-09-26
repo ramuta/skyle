@@ -3,16 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView
-        android:id="@+id/closet_text"
-	    android:layout_height="wrap_content"
-	    android:layout_width="wrap_content"
-	    android:text="MY LOVELY CLOSET" />
  
-    <ListView
-        android:id="@+id/closet_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+    <com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/closet_gallery_top"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
+	
+	<com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/closet_gallery_bottom"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
+	
+	<com.devsmart.android.ui.HorizontalListView 
+	    android:id="@+id/closet_gallery_shoes"
+	    android:layout_width="fill_parent"
+	    android:layout_height="120dp" />
 
 </LinearLayout>

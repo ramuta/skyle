@@ -1,22 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
     
-	<com.devsmart.android.ui.HorizontalListView 
-	    android:id="@+id/outfit_gallery_top"
-	    android:layout_width="fill_parent"
-	    android:layout_height="120dp" />
+	<ListView 
+	    android:id="@+id/outfit_gallery"
+	    android:layout_width="100dp"
+	    android:layout_height="fill_parent"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginRight="5dp" />
 	
-	<com.devsmart.android.ui.HorizontalListView 
-	    android:id="@+id/outfit_gallery_bottom"
+	<LinearLayout
+	    android:id="@+id/outfit_selected_tops"
 	    android:layout_width="fill_parent"
-	    android:layout_height="120dp" />
-	
-	<com.devsmart.android.ui.HorizontalListView 
-	    android:id="@+id/outfit_gallery_shoes"
-	    android:layout_width="fill_parent"
-	    android:layout_height="120dp" />
+	    android:layout_height="90dp"
+	    android:layout_toLeftOf="@id/outfit_gallery">
 
-</LinearLayout>
+	    <ImageView
+	        android:id="@+id/outfit_top_image1"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_top_image2"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_top_image3"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:id="@+id/outfit_selected_bottoms"
+	    android:layout_width="fill_parent"
+	    android:layout_height="100dp"
+	    android:layout_toLeftOf="@id/outfit_gallery"
+	    android:layout_below="@id/outfit_selected_tops">
+	    <ImageView
+	        android:id="@+id/outfit_bottom_image1"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_bottom_image2"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_bottom_image3"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:id="@+id/outfit_selected_shoes"
+	    android:layout_width="fill_parent"
+	    android:layout_height="100dp"
+	    android:layout_toLeftOf="@id/outfit_gallery"
+	    android:layout_below="@id/outfit_selected_bottoms">
+	    <ImageView
+	        android:id="@+id/outfit_shoes_image1"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_shoes_image2"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	    
+	    <ImageView
+	        android:id="@+id/outfit_shoes_image3"
+	        android:layout_width="90dp"
+	        android:layout_height="90dp"
+	        android:tag="empty" />
+	</LinearLayout>
+
+</RelativeLayout>

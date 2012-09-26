@@ -94,13 +94,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			
 			@Override
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-				/*
-				db.open();
-				ArrayList<Item> items = db.getItems();
-				db.close();
-				*/
 				Fragment closetFragment = new ClosetFragment();
         		getSupportFragmentManager().beginTransaction().replace(R.id.container, closetFragment).commit();
 			}

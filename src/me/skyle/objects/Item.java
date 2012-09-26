@@ -1,11 +1,13 @@
 package me.skyle.objects;
 
 public class Item {
+	private String ID;
 	private String type;
 	private String recordDate;
 	private String imagePath;
 	
-	public Item (String type, String recordDate, String imagePath) {
+	public Item (String ID, String type, String recordDate, String imagePath) {
+		this.setID(ID);
 		this.setType(type);
 		this.setRecordDate(recordDate);
 		this.setImagePath(imagePath);
@@ -54,5 +56,19 @@ public class Item {
 	 */
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	/**
+	 * @return the iD
+	 */
+	public String getID() {
+		return ID;
+	}
+
+	/**
+	 * @param iD the iD to set
+	 */
+	public void setID(String iD) {
+		ID = iD;
 	}
 }
